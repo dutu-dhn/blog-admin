@@ -32,11 +32,11 @@ loggoing:
 
 # OSS相关配置信息
 aliyun:
-    endpoint: oss-cn-hangzhou.aliyuncs.com # oss对外服务的访问域名
-    urlPrefix: dutublog.oss-cn-hangzhou.aliyuncs.com
-    accessKeyId: LTAI5t9aauF78QjBMbsPgNTr # 访问身份验证中用到用户标识
-    accessKeySecret: eBZvQbFJ4QyNdJhh3ykiY4VRaPrxNc # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: dutublog # oss的存储空间
+    endpoint: # oss对外服务的访问域名
+    urlPrefix: 
+    accessKeyId:  # 访问身份验证中用到用户标识
+    accessKeySecret:  # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName:  # oss的存储空间
 server:
   port: 8080
 
