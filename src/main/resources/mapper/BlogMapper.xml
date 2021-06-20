@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dutu.admin.mapper.BlogMapper" >
+
+    <insert id="insertBlogByBtid" parameterType="com.dutu.admin.bean.Blog" >
+    insert into blog (bid, title, description,
+      lableid, type, updtime
+      )
+    values (#{bid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{lableid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{updtime,jdbcType=CHAR}
+      )
+  </insert>
+
+</mapper>

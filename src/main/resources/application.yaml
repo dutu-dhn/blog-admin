@@ -1,0 +1,42 @@
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://121.196.172.144:3306/blog_data
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-request-size: 10MB # 上传文件总的最大值
+      max-file-size: 10MB   # 单个文件的最大值
+
+
+#配置mybatis规则
+mybatis:
+  #config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+mybatis-plus:
+  configuration:
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
+loggoing:
+  level:
+    cn:
+      shangze:
+        boot:
+          modules:
+            oa:
+              mapper=debug:
+
+
+# OSS相关配置信息
+aliyun:
+    endpoint: oss-cn-hangzhou.aliyuncs.com # oss对外服务的访问域名
+    urlPrefix: dutublog.oss-cn-hangzhou.aliyuncs.com
+    accessKeyId: LTAI5t9aauF78QjBMbsPgNTr # 访问身份验证中用到用户标识
+    accessKeySecret: eBZvQbFJ4QyNdJhh3ykiY4VRaPrxNc # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: dutublog # oss的存储空间
+server:
+  port: 8080
+

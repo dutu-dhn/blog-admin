@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>AdminX</title>
+    <!--markdown-->
+    <link rel="stylesheet" href="editor.md-master/css/editormd.css"/>
+
+    <!--common-->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- 响应式样式 -->
+    <link href="css/style-responsive.css" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!--左侧菜单-->
+    <div th:replace="common :: #leftmenu"></div>
+
+    <!--主要内容开始-->
+    <div class="main-content" >
+
+        <!-- 头部分开始-->
+        <div th:replace="common :: #headmenu"></div>
+        <!-- 头部分结束-->
+
+        <!-- 页面标题开始-->
+        <div class="page-heading">
+            <h3>
+                新增博客
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a  href="#">博客管理</a>
+                </li>
+                <li class="active"> 新增博客 </li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+        <!--markdown-->
+        <div>
+            <form id="form">
+
+                <div class="form-group" style="margin:0 auto;width: 90%">
+                    <label for="title">文章标题</label>
+                    <input name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group" style="margin:0 auto;width: 90%">
+                    <label for="description">文章概述</label>
+                    <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group" style="margin:0 auto;width: 90%">
+                    <div class="form-group" style="display:inline-block;width: 40%;float: right">
+                        <label for="lableid">文章标签</label>
+                        <select nanme="lableid" class="form-control" id="lableid">
+                            <option th:each="blable:${blableList}" th:value="${blable.getBlid()}" th:text="${blable.getBlname()}">1</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="display:inline-block;width: 40%;float: left">
+                        <label for="type">文章类别</label>
+                        <select name="type" class="form-control" id="type">
+                            <option value="原创">原创</option>
+                            <option value="转载">转载</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <br>
+
+                <div id="my-editormd">
+                    <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+                    <!-- 注意：name属性的值-->
+                    <textarea id="my-editormd-html-code" name="bt" style="display:none;"></textarea>
+                </div>
+                <div class="form-group" style="margin:0 auto;width: 90%">
+                    <button style="float: right" id="save" class="btn btn-success" type="button">保存</button>
+                </div>
+                <br><br><br>
+            </form>
+        </div>
+
+        <!--footer section start-->
+        <footer>
+            2014是由ThemeBucket AdminEx
+        </footer>
+        <!--footer section end-->
+
+
+    </div>
+    <!--主要内容结束-->
+</section>
+
+<!-- 最后把js文件的页面加载速度 -->
+<!--<script src="js/jquery-1.10.2.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<script src="editor.md-master/editormd.amd.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var testEditor =  editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
+            width: "90%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/editor.md-master/lib/",//注意2：你的路径
+            saveHTMLToTextarea: true,//注意3：这个配置，方便post提交表单
+            toolbarIcons : function() {
+                return ["undo","redo","|","bold","italic","quote","uppercase","lowercase","|","h1","h2","h3","h4","|","list-ul","list-ol","hr","|","link","image","code","code-block","table","html-entities","|","watch","preview","fullscreen","clear"]
+            }
+        });
+
+
+        $("#save").click(function () {
+            var title = $("#title").val();
+            var description =$("#description").val();
+            var lableid = $("#lableid").val();
+            var type = $("#type").val();
+
+            var ajaxResult = $.ajax({
+                "url": "/saveblog",
+                "type": "post",
+                "data": {
+                    "bt":testEditor.getMarkdown(),
+                    "title":title,
+                    "description":description,
+                    "lableid":lableid,
+                    "type":type
+
+                },
+                "dataType": "text",
+                "success": function (response) {
+
+                    var result = response.result;
+                    if (result == "SUCCESS") {
+
+                    }
+                    if (result == "FAILED") {
+
+                    }
+
+                }
+
+            });
+            alert("保存成功");
+            window.location.href="/main.html";
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        clearForm();
+    });
+
+    function clearForm(){
+        $("title").reset();
+        $("description").reset();
+        $("my-editormd-markdown-doc").reset();
+    }
+</script>
+
+<!--icheck -->
+<script src="js/iCheck/jquery.icheck.js"></script>
+<script src="js/icheck-init.js"></script>
+
+<!-- jQuery 浮标图表-->
+<script src="js/flot-chart/jquery.flot.js"></script>
+<script src="js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="js/flot-chart/jquery.flot.resize.js"></script>
+
+
+<!--常见的所有页面的脚本-->
+<script src="js/scripts.js"></script>
+
+
+
+
+</body>
+</html>

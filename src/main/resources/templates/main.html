@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>AdminX</title>
+
+    <!--图表样式-->
+    <link href="js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/square.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/blue.css" rel="stylesheet">
+
+    <!--日历样式-->
+    <link href="css/clndr.css" rel="stylesheet">
+    <!--common-->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- 响应式样式 -->
+    <link href="css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!--左侧菜单-->
+    <div th:replace="common :: #leftmenu"></div>
+
+    <!--主要内容开始-->
+    <div class="main-content" >
+
+        <!-- 头部分开始-->
+        <div th:replace="common :: #headmenu"></div>
+        <!-- 头部分结束-->
+
+        <!-- 页面标题开始-->
+        <div class="page-heading">
+            <h3>
+                主页
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">仪表盘</a>
+                </li>
+                <li class="active"> 我的主页 </li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-6">
+                    <!--statistics start-->
+                    <div class="row state-overview">
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel purple">
+                                <div class="symbol">
+                                    <i class="fa fa-gavel"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">230</div>
+                                    <div class="title">文章总数</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel red">
+                                <div class="symbol">
+                                    <i class="fa fa-tags"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">3490</div>
+                                    <div class="title">留言量</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row state-overview">
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel blue">
+                                <div class="symbol">
+                                    <i class="fa fa-eye"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">22014</div>
+                                    <div class="title">文章总访问量</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel green">
+                                <div class="symbol">
+                                    <i class="fa fa-eye"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">390</div>
+                                    <div class="title">网站点击量</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--statistics end-->
+                </div>
+                <div class="col-md-6">
+                    <!--more statistics box start-->
+                    <div class="panel deep-purple-box">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-7 col-sm-7 col-xs-7">
+                                    <div id="graph-donut" class="revenue-graph"></div>
+                                </div>
+                                <div class="col-md-5 col-sm-5 col-xs-5">
+                                    <ul class="bar-legend">
+                                        <li><span class="blue"></span>优惠费率</li>
+                                        <li><span class="green"></span>点击量</li>
+                                        <li><span class="purple"></span>分享量</li>
+                                        <li><span class="red"></span>没订阅率</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--more statistics box end-->
+                </div>
+            </div>
+<!--            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body extra-pad">
+                            <h4 class="pros-title"> 预期 <span>目标</span></h4>
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-4">
+                                    <div id="p-lead-1"></div>
+                                    <p class="p-chart-title">笔记本电脑 </p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div id="p-lead-2"></div>
+                                    <p class="p-chart-title">iPhone</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <div id="p-lead-3"></div>
+                                    <p class="p-chart-title">iPad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body extra-pad">
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="v-title">访问数 </div>
+                                <div class="v-value">10,090</div>
+                                <div id="visit-1"></div>
+                                <div class="v-info">页数/访问</div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="v-title">独立访客 </div>
+                                <div class="v-value">8,173</div>
+                                <div id="visit-2"></div>
+                                <div class="v-info">访问时间</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="panel green-box">
+                        <div class="panel-body extra-pad">
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6">
+                                    <div class="knob">
+                                        <span class="chart" data-percent="79">
+                                            <span class="percent">79% <span class="sm">新的访问 </span></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xs-6">
+                                    <div class="knob">
+                                        <span class="chart" data-percent="56">
+                                            <span class="percent">56% <span class="sm">跳出率</span></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="calendar-block ">
+                                <div class="cal1">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel">
+                        <header class="panel-heading">
+                            任务清单
+                            <span class="tools pull-right">
+                                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                                <a class="fa fa-times" href="javascript:;"></a>
+                             </span>
+                        </header>
+                        <div class="panel-body">
+                            <ul class="to-do-list" id="sortable-todo">
+                                <li class="clearfix">
+                                    <span class="drag-marker">
+                                    <i></i>
+                                    </span>
+                                    <div class="todo-check pull-left">
+                                        <input type="checkbox" value="None" id="todo-check"/>
+                                        <label for="todo-check"></label>
+                                    </div>
+                                    <p class="todo-title">
+                                        仪表板设计& Wiget放置
+                                    </p>
+                                    <div class="todo-actionlist pull-right clearfix">
+
+                                        <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="drag-marker">
+                                    <i></i>
+                                    </span>
+                                    <div class="todo-check pull-left">
+                                        <input type="checkbox" value="None" id="todo-check1"/>
+                                        <label for="todo-check1"></label>
+                                    </div>
+                                    <p class="todo-title">
+                                        线框为新设计做准备
+                                    </p>
+                                    <div class="todo-actionlist pull-right clearfix">
+
+                                        <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="drag-marker">
+                                    <i></i>
+                                    </span>
+                                    <div class="todo-check pull-left">
+                                        <input type="checkbox" value="None" id="todo-check2"/>
+                                        <label for="todo-check2"></label>
+                                    </div>
+                                    <p class="todo-title">
+                                        完美的UI测试大型部分
+                                    </p>
+                                    <div class="todo-actionlist pull-right clearfix">
+
+                                        <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="drag-marker">
+                                    <i></i>
+                                    </span>
+                                    <div class="todo-check pull-left">
+                                        <input type="checkbox" value="None" id="todo-check3"/>
+                                        <label for="todo-check3"></label>
+                                    </div>
+                                    <p class="todo-title">
+                                        Wiget &设计位置
+                                    </p>
+                                    <div class="todo-actionlist pull-right clearfix">
+
+                                        <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="drag-marker">
+                                    <i></i>
+                                    </span>
+                                    <div class="todo-check pull-left">
+                                        <input type="checkbox" value="None" id="todo-check4"/>
+                                        <label for="todo-check4"></label>
+                                    </div>
+                                    <p class="todo-title">
+                                        开发& Wiget位置
+                                    </p>
+                                    <div class="todo-actionlist pull-right clearfix">
+
+                                        <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form" class="form-inline">
+                                        <div class="form-group todo-entry">
+                                            <input type="text" placeholder="Enter your ToDo List" class="form-control" style="width: 100%">
+                                        </div>
+                                        <button class="btn btn-primary pull-right" type="submit">+</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel blue-box twt-info">
+                        <div class="panel-body">
+                            <h3>2014年Februay 19日</h3>
+
+                            <p>AdminEx是管理的新模式　　指示板<a href="#">http://t.co/3laCVziTw4</a>
+                                4天前由John Doe</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="media usr-info">
+                                <a href="#" class="pull-left">
+                                    <img class="thumb" src="images/photos/user2.png" alt=""/>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">管理员3</h4>
+                                    <span>高级视觉设计师 </span>
+                                    <p>我使用的web设计网站和应用程序.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer custom-trq-footer">
+                            <ul class="user-states">
+                                <li>
+                                    <i class="fa fa-heart"></i> 127
+                                </li>
+                                <li>
+                                    <i class="fa fa-eye"></i> 853
+                                </li>
+                                <li>
+                                    <i class="fa fa-user"></i> 311
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <!--body end-->
+
+        <!--footer section start-->
+<!--        <footer>
+
+        </footer>-->
+        <!--footer section end-->
+
+
+    </div>
+    <!--主要内容结束-->
+</section>
+
+<!-- 最后把js文件的页面加载速度 -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<!--饼形图-->
+<script src="js/easypiechart/jquery.easypiechart.js"></script>
+<script src="js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline图表-->
+<script src="js/sparkline/jquery.sparkline.js"></script>
+<script src="js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="js/iCheck/jquery.icheck.js"></script>
+<script src="js/icheck-init.js"></script>
+
+<!-- jQuery 浮标图表-->
+<script src="js/flot-chart/jquery.flot.js"></script>
+<script src="js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="js/flot-chart/jquery.flot.resize.js"></script>
+
+
+<!--莫里斯图表-->
+<script src="js/morris-chart/morris.js"></script>
+<script src="js/morris-chart/raphael-min.js"></script>
+
+<!--日历-->
+<script src="js/calendar/clndr.js"></script>
+<script src="js/calendar/evnt.calendar.init.js"></script>
+<script src="js/calendar/moment-2.2.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+<!--常见的所有页面的脚本-->
+<script src="js/scripts.js"></script>
+
+<!--仪表板的图表-->
+<script src="js/dashboard-chart-init.js"></script>
+
+
+</body>
+</html>

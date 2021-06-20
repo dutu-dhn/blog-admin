@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Form Advanced Components</title>
+
+    <!--ios7-->
+    <link rel="stylesheet" type="text/css" href="js/ios-switch/switchery.css" />
+
+    <!--icheck-->
+    <link href="js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/green.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/blue.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/yellow.css" rel="stylesheet">
+    <link href="js/iCheck/skins/minimal/purple.css" rel="stylesheet">
+
+    <link href="js/iCheck/skins/square/square.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/green.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/blue.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/yellow.css" rel="stylesheet">
+    <link href="js/iCheck/skins/square/purple.css" rel="stylesheet">
+
+    <link href="js/iCheck/skins/flat/grey.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/red.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/yellow.css" rel="stylesheet">
+    <link href="js/iCheck/skins/flat/purple.css" rel="stylesheet">
+
+    <!--multi-select-->
+    <link rel="stylesheet" type="text/css" href="js/jquery-multi-select/css/multi-select.css" />
+
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+
+    <!--tags input-->
+    <link rel="stylesheet" type="text/css" href="js/jquery-tags-input/jquery.tagsinput.css" />
+
+
+
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!--左侧菜单-->
+    <div th:replace="common :: #leftmenu"></div>
+
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- 头部分开始-->
+        <div th:replace="common :: #headmenu"></div>
+        <!-- 头部分结束-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                图片上传
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">图片管理</a>
+                </li>
+                <li class="active"> 图片上传 </li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Advanced File Input
+                            <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <form th:action="@{/file/upload}" enctype="multipart/form-data" method='post'>
+                                <div class="form-group last">
+                                    <label class="control-label col-md-3">上传图片</label>
+                                    <div class="col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                                            </div>
+                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                            <div>
+                                                   <span class="btn btn-default btn-file">
+                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> 重新选择</span>
+                                                   <input type="file" name="file" id="file" class="default" />
+                                                   </span>
+                                                <button type="submit" id="save" class="btn btn-success fileupload-exists" >保 存 </button>
+                                            </div>
+
+                                        </div>
+                                        <br/>
+                                        <span class="label label-danger ">注意!</span>
+                                        <span>仅支持上传jpg,bmp,jpg,jpeg,gif,png</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <footer>
+            2014 &copy; AdminEx by ThemeBucket
+        </footer>
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<!--ios7-->
+<script src="js/ios-switch/switchery.js" ></script>
+<script src="js/ios-switch/ios-init.js" ></script>
+
+<!--icheck -->
+<script src="js/iCheck/jquery.icheck.js"></script>
+<script src="js/icheck-init.js"></script>
+<!--multi-select-->
+<script type="text/javascript" src="js/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+<script src="js/multi-select-init.js"></script>
+<!--spinner-->
+<script type="text/javascript" src="js/fuelux/js/spinner.min.js"></script>
+<script src="js/spinner-init.js"></script>
+<!--file upload-->
+<script type="text/javascript" src="js/bootstrap-fileupload.min.js"></script>
+<!--tags input-->
+<script src="js/jquery-tags-input/jquery.tagsinput.js"></script>
+<script src="js/tagsinput-init.js"></script>
+<!--bootstrap input mask-->
+<script type="text/javascript" src="js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+
+
+<!--common scripts for all pages-->
+<script src="js/scripts.js"></script>
+
+<!--<script>
+    $("#save").on("click", function(){
+        var formData = new FormData();
+        formData.append('file', $('#file')[0].files[0]);
+        $.ajax({
+            url: "/file/upload",
+            type: "POST",
+            date: formData,
+            processData: false,
+            contentType: false,
+            cache:false,
+            success: function(response) {
+                alert("上传成功");
+            },
+            error: function(response){
+                alert(formData.get("file")+formData.get('name'));
+            }
+        })
+    });
+
+</script>-->
+
+</body>
+</html>
